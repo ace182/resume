@@ -1,0 +1,156 @@
+<app-navbar></app-navbar>
+
+<form #PersonaForm="ngForm" (ngSubmit)="crearPersona(); PersonaForm.reset()">
+    <div class="row">
+        <div class="col-md-3 form-group">
+            <label class="control-label">Cedula</label>
+            <input type="number" class="form-control" [(ngModel)]="persona.cedula" name="cedula" #cedula="ngModel"
+                required minlength="8" (keyup)="validarCedula()">
+            <div *ngIf="cedula.errors && (cedula.dirty || cedula.touched)" class="alert alert-danger">
+                <div [hidden]=!cedula.errors.required>Este campo requerido</div>
+            </div>
+        </div>
+        <div class="col-md-3 form-group">
+            <label class="control-label">Fecha de nacimiento</label>
+            <input type="date" class="form-control" [(ngModel)]="persona.fechaNacimiento" name="Fecha">
+        </div>
+        <div class="col-md-3 form-group">
+            <label class="control-label">Sexo</label>
+            <select class="form-control" [(ngModel)]="persona.idSexo" name="sexo" data-toggle="tooltip"
+                data-placement="right" title="Seleccionar sexo" required>
+                <option *ngFor=" let r of sexo; let i =index " [ngValue]="r.id_sexo "> {{r.sexo}}
+                </option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 form-group">
+            <label class="control-label">Nombre</label>
+            <input type="text" class="form-control" [(ngModel)]="persona.nombre" name="nombre" #nombre="ngModel"
+                required>
+            <div *ngIf="nombre.errors && (nombre.dirty || nombre.touched)" class="alert alert-danger">
+                <div [hidden]=!nombre.errors.required>Este campo requerido</div>
+            </div>
+        </div>
+        <div class="col-md-3 form-group">
+            <label class="control-label">Segundo Nombre</label>
+            <input type="text" class="form-control" [(ngModel)]="persona.nombre2" name="nombre2">
+        </div>
+        <div class="col-md-3 form-group">
+            <label class="control-label">Apellido</label>
+            <input type="text" class="form-control" [(ngModel)]="persona.apellido" name="apellido" #apellido="ngModel"
+                required>
+            <div *ngIf="apellido.errors && (apellido.dirty || apellido.touched)" class="alert alert-danger">
+                <div [hidden]=!apellido.errors.required>Este campo requerido</div>
+            </div>
+        </div>
+        <div class="col-md-3 form-group">
+            <label class="control-label">Segundo Apellido</label>
+            <input type="text" class="form-control" [(ngModel)]="persona.apellido2" name="apellido2"
+                #apellido2="ngModel">
+            <!-- <div *ngIf="apellido2.errors && (apellido2.dirty || apellido2.touched)" class="alert alert-danger">
+                <div [hidden]=!apellido2.errors.required>Este campo requerido</div>
+            </div> -->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 form-group">
+            <label class="control-label">Direccion</label>
+            <input type="text" class="form-control" [(ngModel)]="persona.direccion" name="direccion">
+        </div>
+        <div class="col-md-3 form-group">
+            <label class="control-label">Municipio</label>
+            <select class="form-control" [(ngModel)]="persona.idMunicipio" name="municipio" data-toggle="tooltip"
+                data-placement="right" title="Seleccionar Municipio" (ngModelChange)="recargarBarrio($event)" required>
+                <option *ngFor=" let r of municipios; let i =index " [ngValue]="r.m_id "> {{r.m_nombre}}
+                </option>
+            </select>
+        </div>
+        <div class="col-md-3 form-group">
+            <label class="control-label">Barrio</label>
+            <select class="form-control" [(ngModel)]="persona.idBarrio" name="barrio" data-toggle="tooltip"
+                data-placement="right" title="Seleccionar Barrio" (ngModelChange)="recargarComuna($event)" required>
+                <option *ngFor=" let r of barrios; let i =index " [ngValue]="r.b_id"> {{r.b_nombre}} </option>
+            </select>
+        </div>
+        <div class="col-md-3 form-group">
+            <label class="control-label">Comuna</label>
+            <h2 style="text-align: center">{{comuna}}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 form-group">
+            <label class="control-label">Teléfono</label>
+            <input type="number" class="form-control" [(ngModel)]="persona.telefono" name="telefono">
+        </div>
+        <div class="col-md-3 form-group">
+            <label class="control-label">Celular</label>
+            <input type="number" class="form-control" [(ngModel)]="persona.celular" name="celular">
+        </div>
+        <div class="col-md-3 form-group">
+            <label class="control-label">Celular 2</label>
+            <input type="number" class="form-control" [(ngModel)]="persona.celular2" name="celular2">
+        </div>
+        <div class="col-md-3 form-group">
+            <label class="control-label">Email</label>
+            <input type="email" class="form-control" [(ngModel)]="persona.email" name="email">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3 form-group">
+            <label class="control-label">Referido</label>
+            <input type="text" class="form-control" [(ngModel)]="persona.referido" name="referido">
+        </div>
+        <div class="col-md-3 form-group">
+            <label class="control-label">Profesión/Ocupación</label>
+            <select class="form-control" [(ngModel)]="persona.idProfesion" name="profesion" data-toggle="tooltip"
+                data-placement="right" placeholder="Seleccionar Profesión" required>
+                <option *ngFor=" let r of profesion; let i =index " [ngValue]="r.p_id "> {{r.p_nombre}}
+                </option>
+            </select>
+        </div>
+        <div class="col-md-3 form-group">
+            <label class="control-label">Función</label>
+            <input type="text" class="form-control" [(ngModel)]="persona.funcion" name="funcion">
+        </div>
+        <div class="col-md-3 form-group">
+            <label class="control-label">Lider</label>
+            <input type="checkbox" class="form-control" [(ngModel)]="persona.lider" name="lider">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 form-group">
+            <label class="control-label">Municipio de votación</label>
+            <select class="form-control" [(ngModel)]="persona.idMuniVoto" name="municipioVoto" data-toggle="tooltip"
+                data-placement="right" title="Seleccionar Municipio Votación"
+                (ngModelChange)="recargarLugarVoto($event)" required>
+                <option *ngFor=" let r of municipioVoto; let i =index " [ngValue]="r.mv_id "> {{r.mv_nombre}}
+                </option>
+            </select>
+
+        </div>
+        <div class="col-md-4 form-group">
+            <label class="control-label">Lugar de votación</label>
+            <select class="form-control" [(ngModel)]="persona.idLugarVoto" name="lugarVoto" data-toggle="tooltip"
+                data-placement="right" title="Seleccionar Lugar Votación" required>
+                <option *ngFor=" let r of lugarVoto; let i =index " [ngValue]="r.l_id"> {{r.l_nombre}}
+                </option>
+            </select>
+        </div>
+        <div class="col-md-4 form-group">
+            <label class="control-label">Mesa</label>
+            <input type="number" class="form-control" [(ngModel)]="persona.mesaVotacion" name="mesaVoto" minlength="2">
+        </div>
+    </div>
+    <div>
+        <label for="inputDescripcion">Observación</label>
+        <textarea rows="10" cols="10" class="form-control" id="descripcion" [(ngModel)]="persona.observacion"
+            name="perso_observacion"></textarea>
+    </div>
+
+    <div>
+        <button type="submit" [disabled]="!PersonaForm.valid" class="btn btn-primary"> Enviar</button>
+        <button class="btn btn-secondary">Cancelar</button>
+    </div>
+</form>

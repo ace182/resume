@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="http://www.consentidocorp.org/">
+    Con-sentido
+  </a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a *ngIf="prueba != 'user'" class="nav-link" [routerLink]="['/tabla']" [routerLinkActive]="['router-link-active']">
+          <em>Tabla</em>
+       </a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/formulario']" [routerLinkActive]="['router-link-active']">Registro</a>
+      </li>
+
+      <li class="nav-item">
+        <a *ngIf="prueba == 'special'" class="nav-link" [routerLink]="['/tablaErika']" [routerLinkActive]="['router-link-active']">
+          <em>Tabla Recorrido</em>
+       </a>
+      </li>
+
+      <li class="nav-item">
+        <a *ngIf="prueba =='special'" class="nav-link" [routerLink]="['/recorrido']" [routerLinkActive]="['router-link-active']">
+          <em>Formulario Recorrido</em>
+       </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="#">Salir</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+

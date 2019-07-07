@@ -1,0 +1,48 @@
+form{
+    margin: 5% 5%;
+}
+
+
+label, th{
+    font-weight: 500;
+    font-size: 18px;
+    color: rgb(0, 68, 68) 
+}
+
+h1, h2{
+    color: rgb(0, 68, 68)
+}
+
+input{
+    font-weight: 400
+}
+
+button{
+    width:30%;
+    overflow:hidden;
+    margin: 3%;
+}
+
+form{
+    margin-bottom: 10%
+}
+
+ul{
+  margin-left: -2.4rem !important
+}
+
+li{
+    margin-left: 2em
+}
+
+.ng-valid[required],
+.ng-valid.required {
+    border-left: 5px solid #42A948;
+    /* green */
+}
+
+.ng-invalid:not(form) {
+    border-left: 5px solid #a94442;
+    /* red */
+}
+

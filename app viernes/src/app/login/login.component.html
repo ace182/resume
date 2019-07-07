@@ -1,0 +1,24 @@
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+
+
+<div id="all">
+    <h3 class="form-label">Bienvenido</h3>
+    <form class="form-group" (ngSubmit)=" ingresoUsuario()">
+        <div class="input-group">
+            <span class="input-group-addon addon-left" id="username">
+        <i class="fa fa-envelope"></i>
+      </span>
+            <input class="form-control with-primary-addon" name ="usuario" type="text" [(ngModel)]="usuario.usuario">
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon addon-left" id="password">
+        <i class="fa fa-lock"></i>
+      </span>
+            <input class="form-control with-primary-addon" name ="clave" type="password" [(ngModel)]="usuario.contrasena">
+        </div>
+        <button  class="btn btn-lg btn-primary">Login</button>
+
+    </form>
+
+</div>

@@ -1,0 +1,173 @@
+<app-navbar></app-navbar>
+<form >
+    <DIV class="col-md-4">
+           
+    </DIV>
+    <div class=row>
+
+     <div class="col-md-3">
+            <label class="control-label">MUNICIPIO</label>
+            <select class="form-control" [(ngModel)]="persona.idMunicipio" name="municipio" data-toggle="tooltip"
+                data-placement="right" title="Seleccionar Municipio" (ngModelChange)="recargarBarrio($event)" required>
+                <option *ngFor=" let r of municipios; let i =index " [ngValue]="r.m_id "> {{r.m_nombre}}
+                </option>
+            </select>
+
+            <br>
+
+            <label class="control-label">BARRIO</label>
+            <select class="form-control" [(ngModel)]="filterBarrio" (change)="filterByBarrio()" name="filterBarrio" data-toggle="tooltip"
+                data-placement="right" title="Seleccionar Barrio" (ngModelChange)="recargarComuna($event)">
+                <option *ngFor=" let r of barrios; let i =index " [ngValue]="r.b_nombre"> {{r.b_nombre}} </option>
+            </select>
+
+    <!-- <label>
+     <h6>BARRIO</h6>
+    
+      <br>
+      <input type="text" name="filterBarrio"   id="filterBarrio" [(ngModel)]="filterBarrio" (keyup)="filterByBarrio()"/>
+    </label> -->
+    </div>
+  
+    <div class="col-md-3 form-group">
+
+            <label class="control-label">MUNICIPIO VOTACIÓN</label>
+            <select class="form-control" [(ngModel)]="persona.idMuniVoto" name="municipioVoto" data-toggle="tooltip"
+                data-placement="right" title="Seleccionar Municipio Votación"
+                (ngModelChange)="recargarLugarVoto($event)">
+                <option *ngFor=" let r of municipioVoto; let i =index " [ngValue]="r.mv_id"> {{r.mv_nombre}}
+                </option>
+            </select>
+
+           <br>
+            
+        <label class="control-label">LUGAR DE VOTACION</label>
+        <select class="form-control" [(ngModel)]="filterLugarVotacion" (change)="filterByLugarVotacion()" name="filterLugarVotacion" data-toggle="tooltip "
+                data-placement="right" title="Seleccionar Lugar Votación">
+                <option *ngFor=" let r of lugarVoto; let i =index " [ngValue]="r.l_nombre"> {{r.l_nombre}}
+                </option>
+            </select>
+    </div>
+
+    <!-- <div class="col-md-3">
+    <label>
+            <h6>LUGAR DE VOTACION</h6>
+        
+        <br>
+        <input type="text" name="filterLugarVotacion" id="filterLugarVotacion" [(ngModel)]="filterLugarVotacion" (keyup)="filterByLugarVotacion()"/>
+    </label>
+</div> -->
+<div class="col-md-3">
+
+        <label class="control-label">REFERIDO</label>
+        <select class="form-control" [(ngModel)]="filterPersonas" (change)="filterByReferido()" name="filterPersonas" data-toggle="tooltip "
+                data-placement="right" title="Seleccionar referido">
+                <option *ngFor=" let r of personas; let i =index " [ngValue]="r.referido"> {{r.referido}}
+                </option>
+            </select>
+            <br>
+            <!-- <label class="control-label">COMUNA</label>
+            <select class="form-control" [(ngModel)]="filterBarrio" (change)="filterByComuna()" name="filterBarrio" data-toggle="tooltip "
+                    data-placement="right" title="Seleccionar comuna">
+                    <option *ngFor=" let r of barrio; let i =index " [ngValue]="r.b_id"> {{r.b_comuna}}
+                    </option>
+                </select> -->
+
+      <!-- <label>
+            <h6>REFERIDOS</h6>
+        <br>
+        <input type="text" name="filterReferido" id="filterReferido" [(ngModel)]="filterReferido" (keyup)="filterByReferido()"/>
+      </label> -->
+      <label class="control-label">COMUNA</label>
+      <select class="form-control" [(ngModel)]="filterBarrio" (change)="filterByComuna()" name="filterBarrio" data-toggle="tooltip "
+                data-placement="right" title="Seleccionar comuna">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="C">C</option>
+                <option value="X">X</option>
+            </select>
+
+      <!-- <label class="control-label">COMUNA</label>
+      <BR>
+        <input type="text" name="filterBarrio" id="filterBarrio" [(ngModel)]="filterBarrio" (keyup)="filterByComuna()"/> -->
+      
+
+    </div>
+    <div class="col-md-3">
+
+            <label class="control-label">NIVEL</label>
+            <select class="form-control" [(ngModel)]="filterPersonas" (change)="filterByNivel()" name="filterPersonas" data-toggle="tooltip "
+                      data-placement="right" title="Seleccionar nivel">
+                      <option value="0">0</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+            </select>
+      
+    </div>
+
+</div>
+  </form>
+  <br />
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+    <thead>
+        <tr style="text-transform: uppercase"> 
+            <th>Cedula</th>
+            <th>Nombre</th>        
+            <th>Segundo Nombre</th>
+            <th>Apellido</th>
+            <th>Apellido2</th>
+            <th>Sexo</th>
+            <th>Telefono</th>
+            <th>Celular</th>
+            <th>Celular 2</th>
+            <th>Direccion</th>
+            <th>Fecha de nacimiento</th>
+            <th>Email</th>
+            <th>Referido por</th>
+            <th>Barrio</th>
+            <th>Comuna</th>
+            <th>Profesión</th>
+            <th>Municipio</th>
+            <th>Función</th>
+            <th>Municipio de votación</th>
+            <th>Lider</th>
+            <th>Lugar de votación</th>
+            <th>Mesa Votación</th>
+            <th>Nivel</th>
+            <th>Observacion</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let person of persons">
+            <td>{{ person.cedula|uppercase }}</td>
+            <td>{{ person.nombre|uppercase }}</td>
+            <td>{{ person.nombre2|uppercase }}</td>
+            <td>{{ person.apellido|uppercase }}</td>
+            <td>{{ person.apellido2|uppercase }}</td>
+            <td>{{ person.sexo|uppercase }}</td>
+            <td>{{ person.telefono|uppercase }}</td>
+            <td>{{ person.celular|uppercase }}</td>
+            <td>{{ person.celular2|uppercase }}</td>
+            <td>{{ person.direccion|uppercase }}</td>
+            <td>{{person.fecha_nacimiento|date:'M/d/yy'}}</td>
+            <td>{{ person.email|uppercase }}</td>
+            <td>{{ person.referido|uppercase }}</td>
+            <td>{{ person.b_nombre|uppercase }}</td>
+            <td>{{ person.b_comuna|uppercase }}</td>
+            <td>{{ person.p_nombre|uppercase }}</td>
+            <td>{{ person.m_nombre|uppercase }}</td>
+            <td>{{ person.funcion|uppercase }}</td>
+            <td>{{ person.mv_nombre|uppercase }}</td>
+            <td>{{ person.lider|uppercase }}</td>
+            <td>{{ person.l_nombre|uppercase }}</td>
+            <td>{{ person.mesa|uppercase }}</td>
+            <td>{{ person.nivel|uppercase }}</td>
+            <td>{{ person.observacion|uppercase }}</td>
+        </tr>
+    </tbody>
+</table>

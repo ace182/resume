@@ -1,0 +1,23 @@
+#all{
+    margin: 20% 35%
+  }
+  
+  /* Full-width input fields */
+  input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 25px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  .btn:hover {
+    opacity: 0.8;
+  }
+  
+  .btn{
+    margin: 5px 5px;
+    cursor: pointer
+  }
+  

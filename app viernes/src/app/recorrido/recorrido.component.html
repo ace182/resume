@@ -1,0 +1,21 @@
+<app-navbar></app-navbar>
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+  <thead>
+      <tr> 
+          <th>Cedula</th>
+          <th>Nombre</th>        
+          <th>Telefono</th>
+          <th>Referido por</th>
+          <th>Observación</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let person of persons">
+          <td>{{ person.cedula|uppercase }}</td>
+          <td>{{ person.nombre|uppercase }}</td>
+          <td>{{ person.telefono|uppercase }}</td>
+          <td>{{ person.referido|uppercase }}</td>
+          <td>{{ person.observacion|uppercase }}</td>
+      </tr>
+  </tbody>
+</table>

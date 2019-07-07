@@ -1,0 +1,39 @@
+<app-navbar></app-navbar>
+
+<form (ngSubmit)="crearPersona(); PersonaForm.reset() "  #PersonaForm="ngForm" style="margin: 2% 2% 0 2%">
+    <div class="row">
+        <div class="col-md-3 form-group">
+            <label class="control-label">Cedula</label>
+            <input type="number" class="form-control" [(ngModel)]="persona.cedula" name="cedula" #cedula="ngModel" required minlength="8">
+           
+        </div>
+  
+        <div class="col-md-3 form-group">
+            <label class="control-label">Nombre</label>
+            <input type="text" class="form-control" [(ngModel)]="persona.nombre" name="nombre" #nombre="ngModel" required>
+           
+        </div>
+       
+        <div class="col-md-3 form-group">
+            <label class="control-label">Teléfono</label>
+            <input type="number" class="form-control" [(ngModel)]="persona.telefono" name="telefono">
+        </div>
+       
+
+        <div class="col-md-3 form-group">
+            <label class="control-label">Referido</label>
+            <input type="text" class="form-control" [(ngModel)]="persona.referido" name="referido">
+        </div>
+    </div>
+
+    <div>
+        <label for="inputDescripcion">Observación</label>
+        <textarea rows="3" cols="6" class="form-control" id="descripcion" [(ngModel)]="persona.observacion" name="perso_observacion"></textarea>
+    </div>
+    <br>
+    <br>
+    
+    <button class="btn btn-secondary">Cancelar</button>
+    <button type="submit" class="btn btn-primary">Enviar</button>
+    
+</form>
