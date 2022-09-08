@@ -28,7 +28,7 @@
     "datatables.net-dt": "^1.10.19",
     "jquery": "^3.3.1",
     "jqwidgets-scripts": "^6.1.0",
-    "jszip": "^3.1.5",
+    "jszip": "^3.7.0",
     "rxjs": "~6.3.3",
     "sweetalert2": "^7.33.1",
     "tslib": "^1.9.0",
